@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Advanced Search</title>
+    </head>
+    <body>
+        <br><br><br><br>
+            <h1 class="title">Advanced Search</h1>
+        <br><br>
+
+        <div class="container">
+            <% if (message != '') { %>
+                <p class="text-center text-danger"><%= message %></p>
+            <% } %>
+            <form action="/advancedSearch" method="GET">
+                
+           <br><br>
+           <label for="Parking Type">Parking Type:</label> 
+           <select name="parkingType" id="cars">
+           <option value="null">Select Parking Preference</option>
+            <option value="0">No Parking</option>
+            <option value="1">Garage Parking</option>
+            <option value="2">Outdoor Parking</option>
+            <option value="3">Doesn't Matter</option>
+          </select>
+          <br><br>
+           <label for="">Street</label> 
+           <input type="text" class="form-control" name="street" id="street" placeholder="Green (optional)">
+           <br><br>
+           <label for="minPrice">Minimum Price</label> 
+           <input type="text" class="form-control" name="minPrice" id="minPrice" placeholder="0" required>
+           <br><br>
+           <label for="maxPrice">Maximum Price</label> 
+           <input type="text" class="form-control" name="maxPrice" id="maxPrice" placeholder="1500" required>
+           <br><br>
+           <label for="bedCount">Number of Beds</label> 
+           <input type="text" class="form-control" name="bedCount" id="bedCount" placeholder="1" required>
+           <br><br>
+	   <br><br>
+           <label for="bathCount">Number of Baths</label> 
+           <input type="text" class="form-control" name="bathCount" id="bathCount" placeholder="1" required>
+           <br><br>
+
+           <button type="submit" class="btn btn-primary float-right">Get Apartments</button>
+            </form>
+        </div>
+        </div>
+    </body>
+    <script>
+  
+        var textChange = function () {
+            var street = document.getElementById("street").value;
+	    var minPrice = document.getElementById("minPrice").value;
+	    var maxPrice = document.getElementById("maxPrice").value;
+	    var bedCount = document.getElementById("bedCount").value;
+	    var bathCount = document.getElementById("bathCount").value;
+	    var parkingType = document.getElementById("bathCount").value;
+ 
+            document.getElementById("submitButton").href = "/advancedSearch?street="+street+"&minPrice="+minPrice+"&maxPrice="+maxPrice+"&bedCount="+bedCount+"&bathCount="+bathCount+"&parkingType="+parkingType;
+        }
+
+    </script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+    
+        .title {
+            text-align: center;
+            font-size: 40px;
+        }
+    
+        button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 300px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 0px;
+            position: absolute;
+        }
+    
+        input[type=text] {
+            text-align: center;
+            height: 30px;
+            border: 1px solid grey;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+            margin: 0 auto;
+        }
+    
+        .add_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+        
+        .survey_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+    
+        .search_input {
+            position: absolute;
+            left: 42%;
+        }
+    
+        .container {
+            height: 100%;
+            position: relative;
+            top: 20%;
+            left: 40%;
+            font-size: 15px;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    
+        table {
+            height: 100%;
+            width: 800px;
+            border-collapse: collapse;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            page-break-inside: auto;
+        }
+    
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+    
+        th {
+            text-align: left;
+        }
+    
+        thead th {
+            background-color: #55608f;
+        }
+    
+        tbody tr :hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    
+    
+        tbody td {
+            position: relative;		
+        }
+    
+        tbody td :hover :before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }
+    
+        tr {
+            page-break-inside: avoid; 
+            page-break-after: auto;
+        }
+    
+    </style>
+</html>

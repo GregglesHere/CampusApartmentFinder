@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>EditLocation</title>
+    </head>
+    <body>
+        <br><br><br><br>
+            <h1 class="title">Edit Apartment Building Information</h1>
+        <br><br>
+
+        <div class="container">
+            <% if (message != '') { %>
+                <p class="text-center text-danger"><%= message %></p>
+            <% } %>
+            <form action="/edit" method="POST">
+                
+            <input type="text" class="form-control" name="name" id="name" placeholder="Name" required><br><br>
+            <input type="text" class="form-control" name="location" id="location" placeholder="Location" required><br><br>
+            <input type="text" class="form-control" name="minPrice" id="minPrice" placeholder="Minimum Price" required><br><br>
+            <input type="text" class="form-control" name="maxPrice" id="maxPrice" placeholder="Maximum Price" required><br><br>
+            <button type="submit" class="btn btn-primary float-right">Edit Apartment Building</button>
+            </form>
+        </div>
+        </div>
+    </body>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+    
+        .title {
+            text-align: center;
+            font-size: 40px;
+        }
+    
+        button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 300px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 0px;
+            position: absolute;
+        }
+    
+        input[type=text] {
+            text-align: center;
+            height: 30px;
+            width: 300px;
+            border: 1px solid grey;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+            margin: 0 auto;
+        }
+    
+        .add_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+        
+        .survey_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+    
+        .search_input {
+            position: absolute;
+            left: 42%;
+        }
+    
+        .container {
+            height: 100%;
+            position: relative;
+            top: 20%;
+            left: 40%;
+            font-size: 15px;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    
+        table {
+            height: 100%;
+            width: 800px;
+            border-collapse: collapse;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            page-break-inside: auto;
+        }
+    
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+    
+        th {
+            text-align: left;
+        }
+    
+        thead th {
+            background-color: #55608f;
+        }
+    
+        tbody tr :hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    
+    
+        tbody td {
+            position: relative;		
+        }
+    
+        tbody td :hover :before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }
+    
+        tr {
+            page-break-inside: avoid; 
+            page-break-after: auto;
+        }
+    
+    </style>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="table-wrapper">
+        <% if (units.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Location</th>
+                        <th scope="col">Price</th>
+                        <th scope="col"># of Beds</th>
+                        <th scope="col"># of Baths</th>
+                        <th scope="col">Building Name</th>
+                        <th scope="col">Parking Type</th>
+                        <th scope="col">Square Ft.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% units.forEach((unit, index) => { %>
+                        <% if (unit.parking==0) { %>
+                            <tr>
+                                <th scope="row"><%= unit.location %></th>
+                                <td><%= unit.price %></td>
+                                <td><%= unit.bedCount %></td>
+                                <td><%= unit.bathCount %></td>
+                                <td><%= unit.name %></td>
+			        <td> No Parking </td>
+                                <td><%= unit.sqFt %></td>
+                                <td><p><a href="<%= link + unit.location %>" class="btn btn-primary" role="button">Amenities</a></p></td>
+                            </tr>
+
+			<% } else if (unit.parking == 1) { %>
+			    <tr>
+                                <th scope="row"><%= unit.location %></th>
+                                <td><%= unit.price %></td>
+                                <td><%= unit.bedCount %></td>
+                                <td><%= unit.bathCount %></td>
+                                <td><%= unit.name %></td>
+			    	<td> Garage Parking </td>
+                                <td><%= unit.sqFt %></td>
+                                <td><p><a href="<%= link + unit.location %>" class="btn btn-primary" role="button">Amenities</a></p></td>
+                            </tr>
+			<% } else { %>
+				<tr>
+                                    <th scope="row"><%= unit.location %></th>
+                                    <td><%= unit.price %></td>
+                                    <td><%= unit.bedCount %></td>
+                                    <td><%= unit.bathCount %></td>
+                                    <td><%= unit.name %></td>
+			    	    <td>Outdoor Parking</td>
+                                    <td><%= unit.sqFt %></td>
+                                    <td><p><a href="<%= link + unit.location %>" class="btn btn-primary" role="button">Amenities</a></p></td>
+                                </tr>
+			<% } %>
+
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No units found. Go <a href="/add" >here</a> to add buildings.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+    <script>
+  
+        var textChange = function () {
+            var searchText = document.getElementById("searchBox").value;
+            document.getElementById("submitButton").href = "/search?search=" + searchText;
+        }
+
+    </script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        input[type=submit] {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 100px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 0px;
+            position: absolute;
+        }
+
+        input[type=text] {
+            text-align: center;
+            height: 30px;
+            border: 1px solid grey;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+        }
+
+        .add_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+        
+        .survey_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+
+        .search_input {
+            position: absolute;
+            left: 42%;
+        }
+
+        .container {
+            height: 100%;
+            position: relative;
+            top: 20%;
+            left: 22%;
+            font-size: 15px;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+
+        table {
+            height: 100%;
+            width: 800px;
+            border-collapse: collapse;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            page-break-inside: auto;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        thead th {
+            background-color: #55608f;
+        }
+
+        table tr:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+
+        tbody td {
+            position: relative;		
+        }
+
+<%/*        tbody td :hover :before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }*/%>
+
+        tr {
+            page-break-inside: avoid; 
+            page-break-after: auto;
+        }
+
+    </style>
+
+</html>
+

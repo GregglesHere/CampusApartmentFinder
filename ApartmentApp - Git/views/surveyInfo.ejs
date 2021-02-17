@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SurveyInfo</title>
+    </head>
+    <body>
+        <br><br><br><br>
+            <h1 class="title">Search By Distance</h1>
+        <br><br>
+
+        <div class="container">
+            <% if (message != '') { %>
+                <p class="text-center text-danger"><%= message %></p>
+            <% } %>
+            <form action="/surveyInfo" method="GET">
+                
+            <!--<label for="first"> Rank the campus landmarks that you would like your apartment to be in close proximity to. </label> -->
+            <!--<br><br>-->
+        	<label for="first">Choose how far away you would like live from these campus landmarks.</label> 
+            <br><br>
+            <label for="first">For reference, 0.6miles ~ 10 min walk.</label> 
+            <br><br>
+            <!--<label for="first"> Choose between 0 miles, 0.2 miles, 0.6 miles, 0.8 miles, 1.0 miles.</label> -->
+            <!--<br><br>-->
+           <label for="Union">Union</label> 
+           <input type="text" class="form-control" name="Union" id="Union" placeholder="__ miles" required>
+           <br><br>
+           <label for="Grainger">Grainger</label> 
+           <input type="text" class="form-control" name="Grainger" id="Grainger" placeholder="__ miles" required>
+           <br><br>
+           <label for="County">County Market</label> 
+           <input type="text" class="form-control" name="County" id="County" placeholder="__ miles" required>
+           <br><br>
+           <label for="BIF">BIF</label> 
+           <input type="text" class="form-control" name="BIF" id="BIF" placeholder="__ miles" required>
+           <br><br>
+           <label for="Target">Target</label> 
+           <input type="text" class="form-control" name="Target" id="Target" placeholder="__ miles" required>
+           <br><br>
+           <button type="submit" class="btn btn-primary float-right">Get Apartments</button>
+            </form>
+        </div>
+        </div>
+    </body>
+    <script>
+  
+        var textChange = function () {
+            var Union = document.getElementById("Union").value;
+	        var Grainger = document.getElementById("Grainger").value;
+	        var County = document.getElementById("County").value;
+	        var BIF = document.getElementById("BIF").value;
+	        var Target = document.getElementById("Target").value;
+ 
+            document.getElementById("submitButton").href = "/surveyInfo?Union="+Union+"&Grainger="+Grainger+"&County="+County+"&BIF="+BIF+"&Target="+Target;
+                                         
+        }
+
+    </script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #49a09d, #5f2c82);
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+    
+        .title {
+            text-align: center;
+            font-size: 40px;
+        }
+    
+        button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 300px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 0px;
+            position: absolute;
+        }
+    
+        input[type=text] {
+            text-align: center;
+            height: 30px;
+            border: 1px solid grey;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+            margin: 0 auto;
+        }
+    
+        .add_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+        
+        .survey_input {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14c9cb;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+            padding: 0px;
+            height: 35px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            position: absolute;
+            left: 45%;
+        }
+    
+        .search_input {
+            position: absolute;
+            left: 42%;
+        }
+    
+        .container {
+            height: 100%;
+            position: relative;
+            top: 20%;
+            left: 40%;
+            font-size: 15px;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    
+        table {
+            height: 100%;
+            width: 800px;
+            border-collapse: collapse;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: scroll;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            page-break-inside: auto;
+        }
+    
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+    
+        th {
+            text-align: left;
+        }
+    
+        thead th {
+            background-color: #55608f;
+        }
+    
+        tbody tr :hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+    
+    
+        tbody td {
+            position: relative;		
+        }
+    
+        tbody td :hover :before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }
+    
+        tr {
+            page-break-inside: avoid; 
+            page-break-after: auto;
+        }
+    
+    </style>
+</html>
+
+
+
+<!--<select name="cars" id="cars">-->
+<!--           <option value="null">select distance</option>-->
+<!--            <option value="one">0 miles</option>-->
+<!--            <option value="two">0.2 miles</option>-->
+<!--            <option value="three">0.6 miles</option>-->
+<!--            <option value="four">0.8 miles</option>-->
+<!--            <option value="five">1.0 miles</option>-->
+<!--          </select>-->
